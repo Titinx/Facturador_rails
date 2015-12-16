@@ -12,7 +12,7 @@
       <th>Tipo Documento</th>
       <th>Documento</th>
       <th>Cuil/Cuit</th>
-      <th colspan="4"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -30,6 +30,7 @@
         <td><%= link_to 'Editar', edit_client_path(client) %></td>
         <td><%= link_to 'ver contactos', client_contacts_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'ver facturas', client_invoices_path(client) %></td>
       </tr>
     <% end %>
   </tbody>

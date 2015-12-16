@@ -41,5 +41,9 @@
   <strong><%= link_to 'ver contactos', client_contacts_path(@client) %></strong>
 </p>
 
+<p>
+  <strong><%= link_to 'ver facturas emitidas', client_invoices_path(@client) %></strong>
+</p>
+
 <%= link_to 'Editar', edit_client_path(@client) %> |
 <%= link_to 'Volver', clients_path %>
