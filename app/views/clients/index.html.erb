@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Clients</h1>
+<h1>Lista de Clientes</h1>
 
 <table>
   <thead>
@@ -12,7 +12,7 @@
       <th>Tipo Documento</th>
       <th>Documento</th>
       <th>Cuil/Cuit</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -26,8 +26,9 @@
         <td><%= client.kind_document %></td>
         <td><%= client.document %></td>
         <td><%= client.cuil_cuit %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'mostrar', client %></td>
+        <td><%= link_to 'Editar', edit_client_path(client) %></td>
+        <td><%= link_to 'ver contactos', client_contacts_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -36,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Client', new_client_path %>
+<%= link_to 'Nuevo Cliente', new_client_path %>

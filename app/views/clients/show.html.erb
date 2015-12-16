@@ -1,39 +1,45 @@
+<h1> Infomacion de Contacto </h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @client.name %>
 </p>
 
 <p>
-  <strong>Surname:</strong>
+  <strong>Apellido:</strong>
   <%= @client.surname %>
 </p>
 
 <p>
-  <strong>Birthday:</strong>
+  <strong>Fecha de nacimiento:</strong>
   <%= @client.birthday %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
+  <strong>Genero:</strong>
   <%= @client.gender %>
 </p>
 
 <p>
-  <strong>Kind:</strong>
+  <strong>tipo de documento:</strong>
   <%= @client.kind_document %>
 </p>
 
 <p>
-  <strong>Document:</strong>
+  <strong>Documento:</strong>
   <%= @client.document %>
 </p>
 
 <p>
-  <strong>Cuil cuit:</strong>
+  <strong>Cuil/Cuit:</strong>
   <%= @client.cuil_cuit %>
 </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<p>
+  <strong><%= link_to 'ver contactos', client_contacts_path(@client) %></strong>
+</p>
+
+<%= link_to 'Editar', edit_client_path(@client) %> |
+<%= link_to 'Volver', clients_path %>
