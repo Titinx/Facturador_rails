@@ -29,7 +29,11 @@
       <% people_array = Person.all.map { |person| ["#{person.name} #{person.cuil_cuit}", person.id] } %>
       <%= options_for_select(people_array) %>
     <% end %>
-  </div>
+
+    <p> o ingrese una <%= link_to 'Nueva persona', new_person_path %> 
+
+  </div> 
+
   <div class="actions">
     <%= f.submit %>
   </div>

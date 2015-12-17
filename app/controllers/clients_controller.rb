@@ -10,6 +10,11 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @client_invoices = @client.invoices
+    client_age
+    client_invoicing_per_year
+    client_cant_invoices_per_month
+    client_top_five_person
   end
 
   # GET /clients/new
@@ -71,4 +76,41 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :surname, :birthday, :gender, :kind_document, :document, :cuil_cuit)
     end
+
+    # requisitos pedidos en el tpi
+    # se es consiente de que se recorre 3 veces la colleccion "@client_invoices" pero
+    # resulta mas comodo para analizar las 3 operaciones pedidas
+    def client_age
+      @age = ((Date.current - @client.birthday)/365).to_i
+    end
+
+    def client_invoicing_per_year
+      #El monto total facturado por año para el cliente (al estilo "En 2015 facturó $ 999.999,00").
+      @invoicing_year = Hash.new(0)
+      @client.invoices.each do | inv |
+        @invoicing_year[inv.date.year] += inv.amount
+      end
+        @invoicing_year = @invoicing_year.sort_by { |k,v| k } 
+    end
+
+    def client_cant_invoices_per_month
+      #La cantidad de facturas que el cliente ha emitido por mes desde Enero del corriente año.
+      @cant_invoices = Hash.new(0)
+      @client_invoices.each do | inv |
+        @cant_invoices[inv.date.month] += 1 if Date.today.year == inv.date.year
+      end
+      @cant_invoices.sort_by { | key, value | key }.map do |key, value|
+        key, value = Date::MONTHNAMES[key], value
+      end
+    end
+
+    def client_top_five_person
+      #Las 5 personas a las que más les ha facturado ese cliente.
+      @cant_person = Hash.new(0)
+      @client_invoices.each do | inv |
+        @cant_person[inv.person] += 1
+      end
+      @cant_person.sort_by { |key ,value| -value }.first 5
+    end
+
 end
