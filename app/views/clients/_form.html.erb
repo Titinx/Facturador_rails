@@ -25,20 +25,24 @@
   </div>
   <div class="field">
     <%= f.label :genero %><br>
-    <p>"Solo puede ingresar F o M</p>
-    <p>"F = Femenino, M = Masculino"</p>
-    <%= f.text_field :gender %>
+    <%= f.select(:gender) do %>
+      <% array = [ ["Masculino", "Masculino"], ["Femenino", "Femenino"] ] %>
+      <%= options_for_select(array) %>
+    <% end %> 
   </div>
   <div class="field">
     <%= f.label :tipo_de_documento %><br>
-    <%= f.text_field :kind_document %>
+    <%= f.select(:kind_document) do %>
+      <% array = [ ["DNI", "DNI"], ["LE", "LE"], ["LC", "LC"] ] %>
+      <%= options_for_select(array) %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :numero_de_documento %><br>
     <%= f.number_field :document %>
   </div>
   <div class="field">
-    <%= f.label :cuil_cuit %><br>
+    <%= f.label :Cuil_Cuit %><br>
     <%= f.text_field :cuil_cuit %>
   </div>
   <div class="actions">

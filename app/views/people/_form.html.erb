@@ -12,6 +12,15 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :tipo_de_persona %><br>
+    <%= f.select(:kind_person) do %>
+      <% option = [ ["fisica", "fisica"], ["juridica", "juridica"]  ] %>
+      <%= options_for_select(option) %>
+    <% end %>
+
+  </div>
+
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -21,15 +30,22 @@
   </div>
   <div class="field">
     <%= f.label :birthday %><br>
-    <%= f.date_select :birthday %>
+     <%= f.date_select(:birthday, { start_year: 1900, end_year: Date.today.year }) %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.label :genero %><br>
+    <%= f.select(:gender) do %>
+      <% array = [ ["Masculino", "Masculino"], ["Femenino", "Femenino"] ] %>
+      <%= options_for_select(array) %>
+    <% end %>
   </div>
+
   <div class="field">
-    <%= f.label :kind_document %><br>
-    <%= f.text_field :kind_document %>
+    <%= f.label :tipo_doc %><br>
+    <%= f.select(:kind_document) do %>
+      <% array = [ ["DNI", "DNI"], ["LE", "LE"], ["LC", "LC"] ] %>
+      <%= options_for_select(array) %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :document %><br>

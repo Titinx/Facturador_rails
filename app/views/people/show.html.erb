@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Tipo de persona:</strong>
+  <%= @person.kind_person %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @person.name %>
 </p>
 
 <p>
   <strong>Surname:</strong>
-  <%= @person.surname %>
+  <%= rellenar(@person.surname) %>
 </p>
 
 <p>
@@ -17,17 +22,17 @@
 
 <p>
   <strong>Gender:</strong>
-  <%= @person.gender %>
+  <%= rellenar(@person.gender) %>
 </p>
 
 <p>
   <strong>Kind document:</strong>
-  <%= @person.kind_document %>
+  <%= rellenar(@person.kind_document) %>
 </p>
 
 <p>
   <strong>Document:</strong>
-  <%= @person.document %>
+  <%= rellenar(@person.document) %>
 </p>
 
 <p>
@@ -35,5 +40,5 @@
   <%= @person.cuil_cuit %>
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'Editar', edit_person_path(@person) %> |
+<%= link_to 'Volver', people_path %>
