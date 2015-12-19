@@ -1,10 +1,7 @@
 <h1> Infomacion de Contacto </h1>
 <p>
-  <strong><%= link_to 'ver contactos', client_contacts_path(@client) %></strong>
-</p>
-
-<p>
-  <strong><%= link_to 'ver facturas emitidas', client_invoices_path(@client) %></strong>
+  <%= link_to 'ver contactos', client_contacts_path(@client) %> | <%= link_to 'ver facturas emitidas', client_invoices_path(@client) %>
+  <hr>
 </p>
 
 
@@ -49,22 +46,22 @@
   <strong>Edad:</strong>
   <%= @age %>
 </p>
-
+<hr>
 <h2>Facturacion por año:</h2>
   <% @invoicing_year.each do | key, value | %>
     <p> <%= "En el año #{key} el cliente facturó #{value}" %></p>
   <% end %>
-
+<hr>
 <h2>Cantidad de facturas por mes de este año:</h2>
   <% @cant_invoices.each do | key, value | %>
     <p> <%= "En el mes #{key} el cliente emitió #{value} facturas" %></p>
   <% end %>
-
+<hr>
 <h2>Personas a las que mas le facturó:</h2>
   <% @cant_person.each do | key, value | %>
     <p> <%= "En el mes #{key.name} el cliente emitió #{value} facturas" %></p>
   <% end %>
-
+<hr>
 
 <%= link_to 'Editar', edit_client_path(@client) %> |
 <%= link_to 'Volver', clients_path %>

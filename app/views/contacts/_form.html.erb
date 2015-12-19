@@ -13,7 +13,11 @@
 
   <div class="field">
     <%= f.label :kind %><br>
-    <%= f.text_field :kind %>
+    <%= f.select(:kind) do %>
+      <% option = [ ["email", "email"], ["skype", "skype"], ["telefono", "phone"], ["direccion", "direction"]  ] %>
+      <%= options_for_select(option) %>
+    <% end %>
+
   </div>
   <div class="field">
     <%= f.label :data %><br>
