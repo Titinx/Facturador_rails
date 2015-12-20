@@ -21,15 +21,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :nombre %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :surname %><br>
+    <%= f.label :apellido %><br>
     <%= f.text_field :surname %>
   </div>
   <div class="field">
-    <%= f.label :birthday %><br>
+    <%= f.label :fecha_de_nacimiento %><br>
      <%= f.date_select(:birthday, { start_year: 1900, end_year: Date.today.year }) %>
   </div>
   <div class="field">
@@ -48,7 +48,7 @@
     <% end %>
   </div>
   <div class="field">
-    <%= f.label :document %><br>
+    <%= f.label :documento %><br>
     <%= f.number_field :document %>
   </div>
   <div class="field">

@@ -1,4 +1,4 @@
 json.array!(@invoices) do |invoice|
   json.extract! invoice, :id, :description, :amount, :date, :person_id, :client_id
-  json.url invoice_url(invoice, format: :json)
+  json.url client_invoice_url(@client, invoice, format: :json)
 end

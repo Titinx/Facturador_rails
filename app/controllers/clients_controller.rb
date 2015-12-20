@@ -14,7 +14,8 @@ class ClientsController < ApplicationController
     client_age
     client_invoicing_per_year
     client_cant_invoices_per_month
-    client_top_five_person
+    client_top_five_person_per_count
+    client_top_five_person_per_amount
   end
 
   # GET /clients/new
@@ -78,7 +79,7 @@ class ClientsController < ApplicationController
     end
 
     # requisitos pedidos en el tpi
-    # se es consiente de que se recorre 3 veces la colleccion "@client_invoices" pero
+    # se es consciente de que se recorre 3 veces la colleccion "@client_invoices" pero
     # resulta mas comodo para analizar las 3 operaciones pedidas
     def client_age
       @age = ((Date.current - @client.birthday)/365).to_i
@@ -104,13 +105,25 @@ class ClientsController < ApplicationController
       end
     end
 
-    def client_top_five_person
+    # ACLARACION: en el foro se aclaro que la siguiente funcion del sistema debe:
+    # "...mostrar las 5 personas a las que el cliente les ha facturado por más monto."
+    # pero se implmentan las dos formas
+
+    def client_top_five_person_per_count
       #Las 5 personas a las que más les ha facturado ese cliente.
-      @cant_person = Hash.new(0)
+      @top_per_count = Hash.new(0)
       @client_invoices.each do | inv |
-        @cant_person[inv.person] += 1
+        @top_per_count[inv.person] += 1
       end
-      @cant_person.sort_by { |key ,value| -value }.first 5
+      @top_per_count = @top_per_count.sort_by { |key ,value| -value }.first 5
     end
 
+    def client_top_five_person_per_amount
+      #Las 5 personas a las que más les ha facturado ese cliente.
+      @top_per_amount = Hash.new(0)
+      @client_invoices.each do | inv |
+        @top_per_amount[inv.person] += inv.amount
+      end
+      @top_per_amount = @top_per_amount.sort_by { |key , value| -value }.first 5
+    end
 end
