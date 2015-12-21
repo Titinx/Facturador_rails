@@ -12,7 +12,7 @@ class Contact < ActiveRecord::Base
 
   validates :data, format: { 
   	with: /\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*\z/,
-    message: "%{value} no se permiten espacios ni letras epseciales" }, if: :skype?
+    message: "%{value} no se permiten espacios ni letras especiales" }, if: :skype?
 
   validates :data, format: { 
   	with: /\A[\+0-9\-][0-9]{7,15}|^[\+0-9\-][0-9\-\ ]{5,19}[0-9]\z/,
