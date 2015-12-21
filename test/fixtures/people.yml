@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  surname: MyString
+person_one:
+  name: Mirta
+  surname: Legrand
   birthday: 2015-12-16
-  gender: MyString
-  kind_document: MyString
-  document: 1
-  cuil_cuit: MyString
+  gender: Femenino
+  kind_document: DNI
+  document: 20202020
+  cuil_cuit: "27-20202020-2"
 
 two:
   name: MyString

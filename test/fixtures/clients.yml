@@ -1,19 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  surname: MyString
-  birthday: 2015-12-16
-  gender: MyString
-  kind: 
-  document: 1
-  cuil_cuit: MyString
+valido:
+  name: "Bruce"
+  surname: "Willis"
+  birthday: "2015-12-16"
+  gender: "Masculino"
+  kind_document: "DNI" 
+  document: 38383839
+  cuil_cuit: "20-38383839-5"
 
-two:
-  name: MyString
-  surname: MyString
-  birthday: 2015-12-16
-  gender: MyString
-  kind: 
+invalido:
+  name: 123
+  surname: 312
+  birthday: "2015-12-16"
+  gender: "masc"
+  kind_document: "asd" 
   document: 1
-  cuil_cuit: MyString
+  cuil_cuit: "lala"
+
+con_facturas:
+  name: "Darth"
+  surname: "Vader"
+  birthday: "1997-11-28"
+  gender: "Masculino"
+  kind_document: "DNI"
+  document: 38373635
+  cuil_cuit: "20-38383838-5"
+
