@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
   has_many :contacts, dependent: :destroy
   has_many :invoices, dependent: :destroy
+  has_many :people, through: :invoices
 
   #Validaciones
   validates :name, :surname, :cuil_cuit, :kind_document, :document, :gender, :birthday, presence: true
@@ -29,5 +30,37 @@ class Client < ActiveRecord::Base
   validates :kind_document, inclusion: { 
     in: %w(DNI LE LC), 
     message: "admite solo los valores <<dni>>, <<lc>>, <<le>>" 
-  } 
+  }
+
+  def client_age
+      ((Date.current - birthday)/365).to_i
+  end  
+
+  def fac_per_people
+    people
+      .select("name, sum(amount) as sum_amount")
+      .group(:id)
+      .order("sum_amount DESC")
+  end
+
+  def count_fac_per_people
+    people
+      .select("name, count(amount) as tot_amount")
+      .group(:id)
+      .order("tot_amount DESC")
+  end
+
+  def fac_per_year
+    invoices
+      .select("strftime('%Y', date) as year, sum(amount) as total")
+      .group("year")
+      .order("year")
+  end
+
+  def fac_per_mouth
+    invoices
+      .select("strftime('%m', date) as mes, sum(amount) as total")
+      .where("strftime('%Y', date) == strftime('%Y', 'now')")
+      .group("mes")
+  end
 end

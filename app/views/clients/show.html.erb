@@ -42,30 +42,31 @@
   <%= @client.cuil_cuit %>
 </p>
 
-<p>
+  <p>
   <strong>Edad:</strong>
-  <%= @age %>
+  <%= @client.client_age %>
 </p>
 <hr>
 <h2>Facturacion por año:</h2>
-  <% @invoicing_year.each do | key, value | %>
-    <p> <%= "En el año #{key} el cliente facturó #{value}" %></p>
+  <% @client.fac_per_year.each do | p | %>
+    <p> <%= "En el año #{p.year} el cliente facturó #{p.total}" %></p>
   <% end %>
 <hr>
 <h2>Cantidad de facturas por mes de este año:</h2>
-  <% @cant_invoices.each do | key, value | %>
-    <p> <%= "En el mes #{key} el cliente emitió #{value} facturas" %></p>
+  <% @client.fac_per_mouth.each do | p | %>
+    <p> <%= "En el mes #{p.mes} el cliente emitió #{p.total} facturas" %></p>
   <% end %>
 <hr>
 <h2>Personas a las que mas facturas les facturó:</h2>
-  <% @top_per_count.each do | key, value | %>
-    <p> <%= "A la persona, #{key.name}, se le facturó #{value} facturas" %></p>
+  <% @client.count_fac_per_people.each do | p | %>
+    <p> <%= "A la persona, #{p.name}, se le facturó #{p.tot_amount} facturas" %></p>
   <% end %>
 <hr>
 <h2>Personas a las que mas facturó por monto:</h2>
-  <% @top_per_amount.each do | key, value | %>
-    <p> <%= "A la persona, #{key.name}, se le facturó un total de #{value} pesos"  %></p>
+  <% @client.fac_per_people.each do | p | %>
+    <p> <%= "A la persona, #{p.name}, se le facturó un total de #{p.sum_amount} pesos"  %></p>
   <% end %>
+<hr>
 <hr>
 
 
