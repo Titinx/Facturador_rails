@@ -1,7 +1,8 @@
 class Contact < ActiveRecord::Base
   belongs_to :client
 
-  enum kind: [ :email, :skype, :phone, :direction ]
+  # enum kind: [ :email, :skype, :phone, :direction ]
+  enum kind: { email: 0, skype: 1, phone: 2, direction: 3 }
 
   validates :kind, :data, :client, presence: true
   

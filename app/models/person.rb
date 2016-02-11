@@ -48,6 +48,7 @@ class Person < ActiveRecord::Base
 
   with_options if: :is_juridica? do |juridica|
     juridica.validates :name, :cuil_cuit, :birthday, presence: true
+    juridica.validates :surname, :gender, :kind_document, :document, absence: true
   end
   
   def is_fisica?

@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :tipo_de_persona %><br>
     <%= f.select(:kind_person) do %>
-      <% option = [ ["fisica", "fisica"], ["juridica", "juridica"]  ] %>
+      <% option = [ ["Selleccione...", ""], ["fisica", "fisica"], ["juridica", "juridica"]  ] %>
       <%= options_for_select(option) %>
     <% end %>
 
@@ -35,7 +35,7 @@
   <div class="field">
     <%= f.label :genero %><br>
     <%= f.select(:gender) do %>
-      <% array = [ ["Masculino", "Masculino"], ["Femenino", "Femenino"] ] %>
+      <% array = [ ["Seleccione...", ""], ["Masculino", "Masculino"], ["Femenino", "Femenino"] ] %>
       <%= options_for_select(array) %>
     <% end %>
   </div>
@@ -43,7 +43,7 @@
   <div class="field">
     <%= f.label :tipo_doc %><br>
     <%= f.select(:kind_document) do %>
-      <% array = [ ["DNI", "DNI"], ["LE", "LE"], ["LC", "LC"] ] %>
+      <% array = [ ["Seleccione...", ""], ["DNI", "DNI"], ["LE", "LE"], ["LC", "LC"] ] %>
       <%= options_for_select(array) %>
     <% end %>
   </div>
